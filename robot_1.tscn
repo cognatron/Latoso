@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://alien_drone/alien-drone-1c.dae" type="PackedScene" id=1]
+[ext_resource path="res://alien_drone/Texture.material" type="Material" id=2]
+[ext_resource path="res://alien_drone/eyes.material" type="Material" id=3]
+[ext_resource path="res://alien_drone/body-lights.material" type="Material" id=4]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "Shot"
+length = 0.8
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Armature/Skeleton/DRONE_unido:blend_shapes/Key 1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0115938, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 0.812253, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Armature/Skeleton/DRONE_unido:blend_shapes/Key 2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.0115938, 0.1, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
+
+[node name="Scene Root" index="0" instance=ExtResource( 1 )]
+
+[node name="Armature" parent="." index="0"]
+_sections_unfolded = [ "Matrix", "Transform", "Visibility" ]
+
+[node name="DRONE_unido" parent="Armature/Skeleton" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00510684, 0, 0.000822425 )
+"blend_shapes/Key 1" = 0.0634009
+"blend_shapes/Key 2" = 0.421978
+material/0 = ExtResource( 2 )
+material/1 = ExtResource( 3 )
+material/2 = ExtResource( 4 )
+_sections_unfolded = [ "Matrix", "Transform", "Visibility", "blend_shapes", "material" ]
+
+[node name="AnimationPlayer" parent="." index="1"]
+anims/Shot = SubResource( 1 )
+
+[node name="OmniLight" type="OmniLight" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96283, 0 )
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 2.0
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 5.0
+omni_attenuation = 1.0
+omni_shadow_mode = 1
+omni_shadow_detail = 1
+_sections_unfolded = [ "Editor", "Light", "Omni", "Shadow", "Transform", "Visibility" ]
+
